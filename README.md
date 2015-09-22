@@ -4,7 +4,7 @@ This tool allows to monitor per process statistics including:
 * CPU usage
 * Scheduling
 * Memory
-* Network TCP/UDP socket buffers
+* TCP/UDP rx/tx queues
 
 See the usage section for more details.
 
@@ -16,6 +16,7 @@ The PID of the process to monitor can be passed on the command line (--pid <pid>
 The following metrics are currently supported:
 
 | Metric | Description |
+| ------------- | ------------- |
 | cpu usage | Process CPU usage since it has started, calculated as 100 * ((total_time / tick rate) / elapsed time) |
 | sched sum_exec_runtime | Accumulated amount of time spent on the CPU |
 | sched nr_involuntary_switches | Total number of involuntary context switches |
@@ -27,7 +28,7 @@ The following metrics are currently supported:
 | sched sleep_max | Maximum time the task spent sleeping voluntarily |
 | sched block_max | Maximum involutary delay the task experienced (e.g. waiting for disk IO) |
 | sched wait_max | Maximum delay that task saw from the point it got on the run queue to the point it actually started executing its first instruction |
-| sched wait_sum | Accomulated amount of time the process had to wait from run queue to execution |
+| sched wait_sum | Accumulated amount of time the process had to wait from run queue to execution |
 | sched wait_count | Total number of times the process had to wait from run queue to execution |
 | sched wait_avg | Average waiting time (calculated as wait_sum/wait_count)
 | sched iowait_sum | Accumulated amount of time spent waiting for IO |
