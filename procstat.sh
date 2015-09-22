@@ -13,7 +13,7 @@ function showhelp() {
       ;;
 
     "sched")
-      echo "$1 <sum_exec_runtime|nr_involuntary_switches|nr_voluntary_switches|nr_switches|utime|stime|nr_migrations|sleep_max|block_max|wait_max|wait_sum|wait_count|wait_avg|iowait_sum|iowait_count|iowait_avg|nr_wakeups>"
+      echo "$1 <sum_exec_runtime|avg_exec_runtime|nr_involuntary_switches|nr_voluntary_switches|nr_switches|utime|stime|nr_migrations|sleep_max|block_max|wait_max|wait_sum|wait_count|wait_avg|iowait_sum|iowait_count|iowait_avg|nr_wakeups>"
       ;;
 
     "mem")
@@ -110,6 +110,10 @@ case $1 in
     case $2 in
       "sum_exec_runtime" | "nr_involuntary_switches" | "nr_voluntary_switches" | "nr_switches" | "nr_migrations" | "sleep_max" | "block_max" | "wait_max" | "wait_sum" | "wait_count" | "iowait_sum" | "iowait_count" | "nr_wakeups")
         cat /proc/$pid/sched 2>/dev/null | sed -r -e 's/\s+//g' | sed -r  -e 's/^se\.(statistics\.)?//' | egrep "^$2:" | cut -d ':' -f 2
+        ;;
+
+      "avg_exec_runtime")
+        cat /proc/$pid/sched 2>/dev/null | sed -r -e 's/\s+//g' | egrep '^se\.statistics\.(sum_exec_runtime|nr_switches)' | cut -d ':' -f 2 | xargs | tr ' ' '/' | bc
         ;;
 
       "wait_avg")

@@ -22,6 +22,7 @@ The following metrics are currently supported:
 | sched nr_involuntary_switches | Total number of involuntary context switches |
 | sched nr_voluntary_switches | Total number of voluntary context switches |
 | sched nr_switches | Total number of context switches |
+| sched avg_exec_runtime | Average time a task has spent executing on the CPU between two context-switches, calculated as sum_exec_runtime/nr_switches. The lower this value, the more context-switching-happy a task is |
 | sched utime | Amount of time that this process has been scheduled in user mode, measured in clock ticks |
 | sched stime | Amount of time that this process has been scheduled in kernel mode, measured in clock ticks |
 | sched nr_migrations | Total number of times the scheduler migrated the process from one CPU core to another |
