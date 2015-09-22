@@ -1,17 +1,17 @@
 # Unix process performance monitoring tool
-This tool allows to monitor per process statistics including:
+procstat allows to monitor per process statistics including:
 
 * CPU usage
 * Scheduling
 * Memory
 * TCP/UDP rx/tx queues
 
+You would normally call this script from a monitoring system that allows to collect metrics over time (e.g. Zabbix, collectd etc.)
+
 See the usage section for more details.
 
 ## Usage
-You would normally call this script from a monitoring system such as Zabbix or from tools like collectd etc.
-
-The PID of the process to monitor can be passed on the command line (--pid <pid>) or by reading a file containing the Process ID (--pid-file <file>)
+The PID of the process to monitor can be passed directly on the command line (--pid <pid>) or by reading a file containing the Process ID (--pid-file <file>)
 
 The following metrics are currently supported:
 
